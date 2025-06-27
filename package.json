@@ -1,17 +1,33 @@
 {
   "name": "unit4careersim.be",
   "version": "1.0.0",
-  "main": "index.js",
   "type": "module",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "dev": "node --watch --env-file=.env server.js",
+    "db:schema": "psql -d AQuackingGoodTime -f db/schema.sql",
+    "db:seed": "node --env-file=.env db/seed.js",
+    "db:reset": "npm run db:schema && npm run db:seed"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theLylabean/AQuackingGoodTime.BE.git"
+  },
   "author": "",
   "license": "ISC",
-  "description": "",
+  "bugs": {
+    "url": "https://github.com/theLylabean/AQuackingGoodTime.BE/issues"
+  },
+  "homepage": "https://github.com/theLylabean/AQuackingGoodTime.BE/#readme",
+  "keywords": [],
   "dependencies": {
-    "dotenv": "^16.6.1",
-    "express": "^5.1.0"
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.0"
   }
 }
+

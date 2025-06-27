@@ -21,8 +21,6 @@ export function verifyToken(req, res, next) {
   }
 }
 
-// Verify User Middleware next. 
-
 export async function newUserCheck(req, res, next) {
   const { username } = req.body;
   try{
