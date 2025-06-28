@@ -8,21 +8,17 @@ DROP TABLE IF EXISTS users CASCADE;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
+  first_name TEXT NOT NULL,
+  last_name TEXT NOT NULL,
   username TEXT NOT NULL UNIQUE,
   password TEXT NOT NULL
 );
 
-CREATE TABLE products(
+CREATE TABLE products (
     id SERIAL PRIMARY KEY,
     title TEXT UNIQUE NOT NULL,
     image_url TEXT NOT NULL,
-    flavor TEXT NOT NULL,
     price DECIMAL NOT NULL,
-    dose TEXT NOT NULL,
-    total TEXT NOT NULL,
-    quantity INTEGER NOT NULL,
-    strain TEXT NOT NULL,
-    potency TEXT NOT NULL,
     description TEXT NOT NULL
 );
 
@@ -49,7 +45,7 @@ CREATE TABLE order_items (
 CREATE TABLE reviews(
     id SERIAL PRIMARY KEY,
     rating INTEGER NOT NULL,
-    comment TEXT,
+    comment TEXT NOT NULL,
     product_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
