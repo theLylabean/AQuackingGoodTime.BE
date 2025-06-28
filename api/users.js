@@ -5,7 +5,7 @@ import {
   getUserById,
   updateUser,
   deleteUser
-} from '../db/queries/users.js';
+} from '../db/queries/usersqueries.js';
 import { newUserCheck, verifyToken } from '../middleware.js';
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";

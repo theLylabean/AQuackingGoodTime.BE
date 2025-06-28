@@ -1,12 +1,12 @@
 import client from '../client.js';
 
 // CREATE a new user
-export async function createUser(username, password) {
+export async function createUser(first_name, last_name, username, password) {
   const { rows } = await client.query(
-    `INSERT INTO users (username, password)
-     VALUES ($1, $2)
+    `INSERT INTO users (first_name, last_name, username, password)
+     VALUES ($1, $2, $3, $4)
      RETURNING *;`,
-    [username, password]
+    [first_name, last_name, username, password]
   );
   return rows[0];
 }
@@ -28,14 +28,16 @@ export async function getUserById(id) {
 }
 
 // UPDATE user by ID
-export async function updateUser(id, username, password) {
+export async function updateUser(id, first_name, last_name, username, password) {
   const { rows } = await client.query(
     `UPDATE users
-     SET username = $1,
-         password = $2
-     WHERE id = $3
+     SET first_name = $1,
+         last_name = $2, 
+         username = $3,
+         password = $4
+     WHERE id = $5
      RETURNING *;`,
-    [username, password, id]
+    [first_name, last_name, username, password, id]
   );
   return rows[0];
 }

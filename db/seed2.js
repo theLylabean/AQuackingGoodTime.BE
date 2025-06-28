@@ -1,4 +1,5 @@
-import db from "./client.js";
+import db from './client.js';
+import bcrypt from 'bcrypt';
 
 const finalSeed = async () => {
     try{
@@ -154,25 +155,25 @@ const finalSeed = async () => {
                     'Lyla', 
                     'Lynn',
                     'thelylabean', 
-                    '421aters'
+                    '${await bcrypt.hash('421aters', 5)}'
                 ),
                 (
                     'Justin', 
                     'Lynn',
                     'drjustus', 
-                    'wolfie13'
+                    '${await bcrypt.hash('wolfie13', 5)}'
                 ),
                 (
                     'Larry', 
                     'Maxwell',
                     'coinman9', 
-                    'max1218'
+                    '${await bcrypt.hash('max1218', 5)}'
                 ),
                 (
                     'Tyler', 
                     'Maxwell',
                     'tdmax427', 
-                    '421aters'
+                    '${await bcrypt.hash('421aters', 5)}'
                 );
             
             INSERT INTO orders (date, note, user_id) VALUES
