@@ -48,7 +48,6 @@ export async function getProductReviewsById(product_id){
 export async function createProductReviews({ rating, comment, product_id, user_id }){
     const ratingInt = Number(rating);
     const productId = Number(product_id);
-    console.log('createProductReviews 50: ', productId);
     try {
         const result = await db.query(
             `
@@ -58,8 +57,6 @@ export async function createProductReviews({ rating, comment, product_id, user_i
             `,
             [ratingInt, comment, productId, user_id]
         );
-        console.log('createProductReviews 53: ', result);
-        console.log('createProductReviews 63: ', result.rows);
         return result.rows;
     } catch (error) {
         console.error( 'Error getting products:', error );
