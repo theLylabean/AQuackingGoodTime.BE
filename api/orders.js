@@ -5,10 +5,9 @@ import { getOrdersByUser, getOrdersById, createOrder, updateOrder, deleteOrder }
 const router = express.Router();
 const isValidDate = (date) => !isNaN(Date.parse(date));
 
-//GET/api/orders 
 router.get("/", verifyToken, async (req, res, next) => {
     try {
-        const userId = req.user.id; //from decoded JWT
+        const userId = req.user.id;
         const orders = await getOrdersByUser(userId);
         res.json(orders);
     } catch (error) {
@@ -16,8 +15,7 @@ router.get("/", verifyToken, async (req, res, next) => {
     }
 });
 
-//POST/api/orders
-router.post("/", verifyToken, async(req, res, next) => {
+router.post("/createOrder", verifyToken, async(req, res, next) => {
     try {
         const { date, note } = req.body;
         const userId = req.user.id;
@@ -32,7 +30,6 @@ router.post("/", verifyToken, async(req, res, next) => {
     }
 }); 
 
-//POST /api/orders/:orderId/items
 router.post('/:orderId/items', verifyToken, async ( req, res, next ) => {
     const { productId, quantity } = req.body;
     const { orderId } = req.params;
@@ -50,7 +47,6 @@ router.post('/:orderId/items', verifyToken, async ( req, res, next ) => {
     }
 })
 
-//PUT/api/orders/:id
 router.put("/:id", verifyToken, async(req, res, next) => {
     try {
         const { id } = req.params;
@@ -74,7 +70,6 @@ router.put("/:id", verifyToken, async(req, res, next) => {
     }
 })
 
-//DELETE/api/orders/:id
 router.delete("/:id", verifyToken, async (req, res, next) => {
     try{
         const { id } = req.params;
