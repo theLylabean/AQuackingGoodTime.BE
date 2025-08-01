@@ -5,7 +5,8 @@ import {
   updateUser,
   deleteUser,
   newUsernameCheck,
-  newEmailCheck
+  newEmailCheck,
+  getLogin
 } from '../db/queries/usersqueries.js';
 import { verifyToken } from '../middleware.js';
 import jwt from "jsonwebtoken";
